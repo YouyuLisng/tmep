@@ -59,72 +59,91 @@
         </div>
       </div>
     </div>
+    <Swiper></Swiper>
     <section>
-      <div class="container py-lg-5">
-        <div class="text-wrap text-center py-lg-5 py-md-4 p-3">
-          <h2 class="section-title fw-bold">推薦行程</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <button class="area_btn" @click="click">
+              <div class="img-wrap"><img src="../../images/icon/pin.png" alt=""></div>
+              <p class="ps-2">台北</p>
+            </button>
+          </div>
+          <div class="col">
+            <button class="area_btn">
+              <div class="img-wrap"><img src="../../images/icon/pin.png" alt=""></div>
+              <p class="ps-2">新北</p>
+            </button>
+          </div>
+          <div class="col">
+            <button class="area_btn">
+              <div class="img-wrap"><img src="../../images/icon/pin.png" alt=""></div>
+              <p class="ps-2">台中</p>
+            </button>
+          </div>
+          <div class="col">
+            <button class="area_btn">
+              <div class="img-wrap"><img src="../../images/icon/pin.png" alt=""></div>
+               <p class="ps-2">台中</p>
+            </button>
+          </div>
+          <div class="col">
+            <button class="area_btn">
+              <div class="img-wrap"><img src="../../images/icon/pin.png" alt=""></div>
+               <p class="ps-2">台中</p>
+            </button>
+          </div>
+          <div class="col">
+            <button class="area_btn">
+              <div class="img-wrap"><img src="../../images/icon/pin.png" alt=""></div>
+               <p class="ps-2">台中</p>
+            </button>
+          </div>
+          <div class="col">
+            <button class="area_btn">
+              <div class="img-wrap"><img src="../../images/icon/pin.png" alt=""></div>
+               <p class="ps-2">台中</p>
+            </button>
+          </div>
+          <div class="col">
+            <button class="area_btn">
+              <div class="img-wrap"><img src="../../images/icon/pin.png" alt=""></div>
+               <p class="ps-2">台中</p>
+            </button>
+          </div>
+
         </div>
-        <Swiper class="mySwiper" slides-per-view="auto" loop="true" :modules="modules" :autoplay="{ delay: 1500 }"
-          :navigation="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }" :spaceBetween="5">
-          <SwiperSlide class="">
-            <img class="img-fluid" src="../../images/swiper/7000yen_photo_2x.webp" alt="">
-          </SwiperSlide>
-          <SwiperSlide class="">
-            <img class="img-fluid" src="../../images/swiper/nature_photo_2x.webp" alt="">
-          </SwiperSlide>
-          <SwiperSlide class="">
-            <img class="img-fluid" src="../../images/swiper/ittou_photo_2x.webp" alt="">
-          </SwiperSlide>
-          <SwiperSlide class="">
-            <img class="img-fluid" src="../../images/swiper/onsen_photo_2x.webp" alt="">
-          </SwiperSlide>
-          <SwiperSlide class="">
-            <img class="img-fluid" src="../../images/swiper/0200q120009pd3k268A54_R_960_660_R5_D.webp" alt="">
-          </SwiperSlide>
-          <SwiperSlide class="">
-            <img class="img-fluid" src="../../images/swiper/pet_photo_2x.webp" alt="">
-          </SwiperSlide>
-          <SwiperSlide class="">
-            <img class="img-fluid" src="../../images/swiper/1109715_15101412450036838546.jpg" alt="">
-          </SwiperSlide>
-        </Swiper>
-        <!-- <div class="swiper-button-next">
-          <img src="../../images/icon/arrow-right.png" alt="">
-        </div>
-        <div class="swiper-button-prev position-absolute top-50 start-0 translate-middle">
-          <img src="../../images/icon/2985162.png" alt="">
-        </div> -->
       </div>
     </section>
   </div>
   <offcanvas ref="navoffcanse"></offcanvas>
 </template>
 <script>
-import { Pagination, Autoplay, Navigation } from 'swiper'
-import 'swiper/css/pagination'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/css'
 import axios from 'axios'
 import offcanvas from '../../components/NavOffcanse.vue'
+import Swiper from '../../components/SwiperView.vue'
 export default {
   data () {
     return {
       alldata: [],
       search: '',
-      keyword_Option: [],
-      modules: [Pagination, Autoplay, Navigation]
+      keyword_Option: []
     }
   },
   components: {
     offcanvas,
-    Swiper,
-    SwiperSlide
+    Swiper
   },
   created () {
     axios.get('/data/opendata.json')
       .then((res) => {
         this.alldata = res.data.XML_Head.Infos.Info
       })
+  },
+  methods: {
+    click (e) {
+      console.log(e.target)
+    }
   }
 }
 </script>
@@ -136,72 +155,6 @@ export default {
   letter-spacing: 3px !important;
   color: #333 !important;
   font-weight: 500 !important;
-}
-
-.swiper {
-  border-radius: 10px;
-}
-
-.swiper-button-prev,
-.swiper-rtl .swiper-button-next {
-  left: 30px;
-  right: auto;
-}
-
-.swiper-button-next,
-.swiper-rtl .swiper-button-prev {
-  right: 30px;
-}
-
-.swiper-button-prev img {
-  background-color: #fff;
-  border-radius: 50%;
-  width: 57px;
-  height: 57px;
-}
-
-.swiper-button-next img {
-  background-color: #fff;
-  border-radius: 50%;
-  width: 57px;
-  height: 57px;
-}
-
-.swiper-slide {
-  width: 20% !important;
-  height: 185px;
-}
-
-@media(max-width:960px) {
-  .swiper-button-prev img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .swiper-button-next img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .swiper-slide {
-    width: 33% !important;
-  }
-}
-
-@media(max-width:500px) {
-  .swiper-button-prev img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .swiper-button-next img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .swiper-slide {
-    width: 50% !important;
-  }
 }
 
 nav {
@@ -240,11 +193,28 @@ input {
   border-radius: 10px;
   height: 100% !important;
 }
+.area_btn img {
+  width: 30px;
+  height: 30px;
+}
 
-@media(min-width:1400px) {
-  .container-swiper {
-    margin: 0 auto;
-    max-width: 1321px;
-  }
+.area_btn {
+  border: 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.area_btn p {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.img-wrap {
+  padding: 10px;
+  background-color: #F4D35E;
+  border-radius: 10px;
 }
 </style>

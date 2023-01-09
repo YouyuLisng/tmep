@@ -9,6 +9,13 @@ const routes = [
     meta: {
       title: '首頁'
     }
+  },
+  {
+    path: '/test',
+    component: () => import('@/views/test/testView.vue'),
+    meta: {
+      title: '首頁'
+    }
   }
 ]
 
